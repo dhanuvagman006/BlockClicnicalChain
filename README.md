@@ -153,26 +153,6 @@ cd contracts && npm install && npm run compile && npm run deploy
 
 ---
 
-## Deployment
-
-### Render backend
-
-Deploy the repository root as a Render web service using the included [render.yaml](render.yaml). The backend listens on Render's `$PORT` automatically.
-
-Set this environment variable in Render:
-
-- `CORS_ORIGINS` to your Vercel frontend origin, for example `https://your-app.vercel.app`
-
-### Vercel frontend
-
-Deploy [frontend-app](frontend-app) as the Vercel project root. Set this environment variable in Vercel:
-
-- `REACT_APP_API_URL` to your Render backend URL, for example `https://your-backend.onrender.com`
-
-The frontend uses [frontend-app/src/api.js](frontend-app/src/api.js) to read that value at build time.
-
----
-
 ## All 12 Steps — Implementation Summary
 
 | Step | Feature | Module |
