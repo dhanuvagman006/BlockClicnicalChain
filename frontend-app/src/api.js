@@ -7,7 +7,6 @@ const API = axios.create({
   timeout: 30000,
 });
 
-// ── Hashing ──────────────────────────────────────────────────
 export const computeHash    = (data)    => API.post('/api/hash/compute',   { data });
 export const hashRecord     = (record)  => API.post('/api/hash/record',    record);
 export const avalancheDemo  = (o, m)    => API.post('/api/hash/avalanche', { original: o, modified: m });
