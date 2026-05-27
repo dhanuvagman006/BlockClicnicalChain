@@ -99,9 +99,15 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
+def _get_cors_origins() -> list[str]:
+    raw_origins = os.getenv("CORS_ORIGINS", "*")
+    origins = [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
+    return origins or ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_get_cors_origins(),
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -948,4 +954,6 @@ def metrics():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.getenv("PORT", "8000"))
+    reload_enabled = os.getenv("UVICORN_RELOAD", "false").lower() == "true"
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=reload_enabled)
