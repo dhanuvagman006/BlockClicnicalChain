@@ -5,11 +5,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://blockclicnicalchain.onrender.com/api/$1"
+      "destination": "/api/index.py"
     },
     {
       "source": "/health",
-      "destination": "https://blockclicnicalchain.onrender.com/health"
+      "destination": "/api/index.py"
     },
     {
       "source": "/(.*)",
